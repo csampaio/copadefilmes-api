@@ -82,7 +82,7 @@ namespace copadefilmes_api.Controllers
             _context.Filmes.Add(filme);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetFilme", new { id = filme.Id }, filme);
+            return CreatedAtAction(nameof(GetFilme), new { id = filme.Id }, filme);
         }
 
         // DELETE: api/Filmes/5
