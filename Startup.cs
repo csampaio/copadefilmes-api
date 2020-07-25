@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,6 +23,7 @@ namespace copadefilmes_api
         {
             services.AddDbContext<FilmeContext>(opt =>
                opt.UseInMemoryDatabase("FilmeList"));
+            services.AddHttpClient();
             services.AddControllers();
         }
 
