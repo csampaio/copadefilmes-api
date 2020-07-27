@@ -1,4 +1,4 @@
-using  copadefilmes_api.Models;
+using System.Collections.Generic;
 
 namespace copadefilmes_api.Models
 {

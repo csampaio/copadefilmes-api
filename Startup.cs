@@ -1,9 +1,15 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using copadefilmes_api.Models;
 
@@ -24,6 +30,7 @@ namespace copadefilmes_api
             services.AddDbContext<FilmeContext>(opt =>
                opt.UseInMemoryDatabase("FilmeList"));
             services.AddHttpClient();
+            services.AddCors();
             services.AddControllers();
         }
 
@@ -40,6 +47,8 @@ namespace copadefilmes_api
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(option => option.AllowAnyOrigin());;
 
             app.UseEndpoints(endpoints =>
             {
